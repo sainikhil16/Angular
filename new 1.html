@@ -1,0 +1,27 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="new 1.js"></script>
+</head>
+<body ng-app='myApp'>
+ <div ng-controller='mycontroller'>
+<!--<p>{{username}}</p>
+<input type="text" ng-model="username">
+<h1>Hello<span ng-bind="username"></span></h1> -->
+<button ng-click="sayHello()">Hello</button> 
+{{greeting}}
+<p ng-show="visible">I am showing Example Of ng-show</p>
+<p ng-hide="hide">I am Hiding Content of ng-hide</p>
+<p ng-if="condition">show content</p>
+<button ng-click="nikhil()">Submit</button>
+<p ng-hide="Nikhil">my name is sainikhil</p>
+<p ng-hide="Nikhil">my name is sainikhil</p>
+<p ng-hide="Nikhil">>my name is sainikhil</p>
+</div>
+<!-- <div ng-init="check=0">
+<button ng-click="check=check+1">submit</button>
+<p>button has been clicked{{check}} times</p>
+</div> -->
+
+</body>
+</html>

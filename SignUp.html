@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SignUp Page</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script type="text/javascript" src="SignUp.js"></script>
+</head>
+<style type="text/css">
+body{
+	background-image: url('rain.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	height:605px;
+}
+	#ui{
+		background-color: #333;
+		padding: 30px;
+		margin-top: 20px;
+		border-radius: 10px;
+		opacity: 0.8;
+	}
+	#ui label,h3{
+		color: #fff;
+	}
+</style>
+<body ng-app="NikhilApp">
+	<div class="container" ng-controller="NikhilController">
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+				<div id="ui">
+					<h3 class="text-center">SignUp Form</h3>
+					<form name="Nikhilform" class="form-group text-center">
+						<div class="row">
+							<div class="col-lg-6">
+								<label>FirstName</label>
+								<input type="text" ng-model="user.FirstName" name="fname" class="form-control" placeholder="Enter your FirstName..." ng-required="true" ng-minlength="5" ng-maxlength="20" ng-pattern="/^[a-zA-Z0-9]+$/i">
+								<div ng-show="Nikhilform.$submitted || Nikhilform.fname.$touched" style="color: red;">
+									<div ng-show="Nikhilform.fname.$error.required">FirstName is Required</div>
+									<div ng-show="Nikhilform.fname.$error.maxlength">Maximum No of Characters Must be 5 to 20</div>
+									<div ng-show="Nikhilform.fname.$error.minlength">Minimum No of Characters 5</div>
+									<div ng-show="Nikhilform.fname.$error.pattern">Only Characters are allowed</div>
+								</div>
+							</div><br>
+							<div class="col-lg-6">
+								<label>LastName</label>
+								<input type="text" ng-model="user.LastName" name="lname" class="form-control" placeholder="Enter your LastName..." required ng-minlength="5" ng-maxlength="20" ng-pattern="/^[a-zA-Z0-9]+$/i">
+								<div ng-show="Nikhilform.$submitted || Nikhilform.lname.$touched" style="color: red;">
+									<div ng-show="Nikhilform.lname.$error.required">LastName is Required</div>
+									<div ng-show="Nikhilform.lname.$error.maxlength">Maximum No of Characters Must be 5 to 20</div>
+									<div ng-show="Nikhilform.lname.$error.minlength">Minimum No of Characters 5</div>
+									<div ng-show="Nikhilform.lname.$error.pattern">Only Characters are allowed</div>
+							</div>
+						</div><br>
+						<label>Email</label>
+						<input type="email" ng-model="user.Email"name="Email" class="form-control" placeholder="Enter your Email..." required ng-pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,3}$/i">
+						<div ng-show="Nikhilform.$submitted || Nikhilform.Email.$touched" style="color: red;">
+							<div ng-show="Nikhilform.Email.$error.required">Email is Required</div>
+							<div ng-show="Nikhilform.Email.$error.pattern">Enter Valid Email address</div>
+						</div><br>
+						<div class="row">
+							<div class="col-lg-6">
+								<label>Password</label>
+								<input type="password" ng-model="user.Password" name="Password" class="form-control" placeholder="Enter your Password..." required ng-minlength="8" ng-maxlength="25" ng-pattern="" >
+								<div ng-show="Nikhilform.$submitted || Nikhilform.Password.$touched" style="color: red;">
+									<div ng-show="Nikhilform.Password.$error.required">Password is Required</div>
+									<div ng-show="Nikhilform.Password.$error.maxlength">Maximum No of Characters Must be 8 to 25</div>
+									<div ng-show="Nikhilform.Password.$error.minlength">Minimum Characters Must be 8</div>
+									<div ng-show="Nikhilform.Password.$error.pattern">One Character and One Special Characters</div>
+								</div>
+							</div><br>
+							<div class="col-lg-6">
+								<label>Re-type Password</label>
+								<input type="password" ng-model="user.Retypepassword" name="password" class="form-control" placeholder="Enter your Re-type Password..." required ng-minlength="8" ng-maxlength="25">
+								<div ng-show="Nikhilform.$submitted || Nikhilform.password.$touched" style="color: red;">
+									<div ng-show="Nikhilform.password.$error.required">Re-type Password is Required</div>
+									<div ng-show="Nikhilform.password.$error.maxlength">Maximum No of Characters Must be 8 to 25</div>
+									<div ng-show="Nikhilform.password.$error.minlength">Minimum No of Characters Must be 8</div>
+								</div>
+							</div>
+						</div><br>
+						<label>Phone No</label>
+						<input type="number" ng-model="user.Number" name="Number" class="form-control" placeholder="Enter your Phone Number..." required ng-maxlength="10">
+						<div ng-show="Nikhilform.$submitted || Nikhilform.Number.$touched" style="color: red;">
+							<div ng-show="Nikhilform.Number.$error.required">Phone Number is Required</div>
+							<div ng-show="Nikhilform.Number.$error.maxlength">Maximum 10 Characters</div>
+						</div><br>
+						<label>Gender</label>
+						<div>
+							<select class="form-control" name="Gender" ng-model="user.Gender" ng-options="Gender.Name for Gender in genders">
+								<option value="">Choose gender..</option>
+							</select>
+						</div><br>
+						<input type="submit" name="submit" value="Reset" class="btn btn-success btn-block btn-lg" ng-click="reset(user)"><br>
+						<input type="submit" name="Save" value="Save" class="btn btn-success btn-block btn-lg" ng-click="save(user)">
+					</form>
+				</div>
+			</div>
+			<div class="col-lg-3"></div>
+
+		</div>
+		
+	</div>
+	<p style="color: red">User:{{user|json}}</p>
+	<p style="color:red">UserData:{{UserData|json}}</p>
+		<!-- <div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+				<div id="ui">
+					<h3 class="text-center">SignUp Form</h3> -->
+					<!-- <form name="Nikhilform" class="form-group text-center">
+						<div class="row">
+							<div class="col-lg-6">
+								<label>FirstName</label>
+								<input type="text" ng-model="user.FirstName" name="fname" class="form-control" placeholder="Enter your FirstName..." required ng-maxlength="20" ng-minlength="5" ng-pattern="/^[a-zA-Z]+$/i">
+								<div ng-show="Nikhilform.$submitted || Nikhilform.fname.$touched">
+									<div ng-show="Nikhilform.fname.$error.required">FirstName is Required</div>
+									<div ng-show="Nikhilform.fname.$error.maxlength">Maximum No Of Character Must be 5 to 20</div>
+									<div ng-show="Nikhilform.fname.$error.minlength">Minimum No Of Character 5</div>
+									<div ng-show="Nikhilform.fname.$error.pattern">Only Characters are allowed</div>
+									
+								</div>
+							</div><br>
+							<div class="col-lg-6">
+								<label>LastName</label>
+								<input type="text" ng-model="user.LastName" name="lname" class="form-control" placeholder="Enter your LastName..." required ng-maxlength="20" ng-minlength="5" ng-pattern="/^[a-zA-Z0-9]+$/i">
+								<div ng-show="Nikhilform.$submitted || Nikhilform.lname.$touched">
+									<div ng-show="Nikhilform.lname.$error.required">LastName is Required</div>
+									<div ng-show="Nikhilform.lname.$error.maxlength">Maximum No Of Character Must be 5 to 20</div>
+									<div ng-show="Nikhilform.lname.$error.minlength">Minimum No Of Character 5</div>
+									<div ng-show="Nikhilform.lname.$error.pattern">Only Characters are allowed</div>
+								</div>
+							</div>
+							</div>
+						</div><br>
+						<label>Email</label>
+						<input type="email" ng-model="user.email" name="email" class="form-control" placeholder="Enter your Email..." required ng-pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,3}$/i"><br>
+						<div ng-show="Nikhilform.$submitted || Nikhilform.email.$touched">
+							<span ng-show="Nikhilform.email.$error.required">Email Address is required</span>
+							<span ng-show="Nikhilform.email.$error.email">Enter Valid Email Adddress</span>
+							<span ng-show="Nikhilform.email.$error.pattern">Enter</span>
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+								<label>Password</label>
+								<input type="password" ng-model="user.Password" name="pwd" class="form-control" placeholder="Enter New Password..." required >
+							</div><br>
+							<div class="col-lg-6">
+								<label>Re-type Password</label>
+								<input type="password" name="pwd" class="form-control" placeholder="Re-type again..">
+							</div>
+						</div><br>
+						<label>Phone</label>
+						<input type="text" name="phone" class="form-control" placeholder="Enter your Phone Number..."><br>
+						<select class="form-control">
+							<option>Choose gender..</option>
+							<option>Male</option>
+							<option>Female</option>
+							<option>Others</option>
+						</select><br>
+						<input type="submit" name="submit" value="Submit" class="btn btn-success btn-block btn-lg">
+
+					</form> -->
+				
+	
+	
+		
+	
+
+
+</body>
+</html>
